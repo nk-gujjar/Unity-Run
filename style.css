@@ -174,6 +174,9 @@ header.scrolled {
 .home {
     height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://img.freepik.com/premium-vector/marathon-running-people-jogging-athletes-group-sprinting-men-women-isolated-vector-illustration-marathon-racing-competition_229548-1839.jpg') no-repeat center center/cover;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -181,6 +184,7 @@ header.scrolled {
     color: white;
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 .home-content {
@@ -255,6 +259,8 @@ header.scrolled {
     overflow: hidden;
     border-radius: 15px;
     box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 100%;
 }
 
 .marathon-animation img {
@@ -302,9 +308,10 @@ header.scrolled {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
     margin-top: 50px;
+    width: 100%;
 }
 
 .gallery-item {
@@ -314,7 +321,9 @@ header.scrolled {
     box-shadow: var(--shadow);
     transition: var(--transition);
     aspect-ratio: 16/9;
-    min-height: 250px;
+    min-height: 200px;
+    max-width: 100%;
+    width: 100%;
 }
 
 .gallery-item img,
@@ -516,6 +525,10 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 992px) {
+    .home {
+        background-attachment: scroll;
+    }
+
     .about-content {
         grid-template-columns: 1fr;
     }
@@ -523,6 +536,15 @@ footer {
     .marathon-animation {
         width: 100%;
         height: 300px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .gallery-item {
+        min-height: 180px;
     }
 }
 
@@ -568,6 +590,19 @@ footer {
     .event-details {
         padding: 30px 20px;
     }
+
+    .marathon-animation {
+        height: 250px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .gallery-item {
+        min-height: 150px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -585,5 +620,38 @@ footer {
 
     .section-title {
         font-size: 1.8rem;
+    }
+
+    .marathon-animation {
+        height: 200px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .gallery-item {
+        min-height: 120px;
+    }
+
+    .container {
+        width: 95%;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 360px) {
+    .marathon-animation {
+        height: 180px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .gallery-item {
+        min-height: 100px;
     }
 }
