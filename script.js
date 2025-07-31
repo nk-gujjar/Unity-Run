@@ -125,3 +125,48 @@ window.addEventListener('scroll', () => {
     const scrollPosition = window.pageYOffset;
     homeSection.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
 });
+
+function getNextEventDate() {
+  const now = new Date();
+  const year = (now.getMonth() > 9 || (now.getMonth() === 9 && now.getDate() > 26)) ? now.getFullYear() + 1 : now.getFullYear();
+  // October is month 9 (0-indexed)
+  return new Date(year, 9, 26, 6, 0, 0);
+}
+
+function animateNumber(id, newValue) {
+  const el = document.getElementById(id);
+  if (el && el.textContent !== String(newValue)) {
+    el.textContent = newValue;
+    el.classList.remove('flip', 'pulse', 'bounce');
+    void el.offsetWidth; // Force reflow to restart animation
+    el.classList.add('flip', 'pulse', 'bounce');
+    setTimeout(() => {
+      el.classList.remove('flip', 'pulse', 'bounce');
+    }, 500);
+  }
+}
+
+function updateCountdown() {
+  const eventDate = getNextEventDate();
+  const now = new Date();
+  const diff = eventDate - now;
+
+  if (diff <= 0) {
+    const box = document.querySelector('.countdown-timer-box');
+    if (box) box.textContent = "Event Started!";
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  animateNumber('cd-days', days);
+  animateNumber('cd-hours', hours);
+  animateNumber('cd-minutes', minutes);
+  animateNumber('cd-seconds', seconds);
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
