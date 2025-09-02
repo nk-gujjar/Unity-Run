@@ -128,9 +128,9 @@ window.addEventListener('scroll', () => {
 
 function getNextEventDate() {
   const now = new Date();
-  const year = (now.getMonth() > 9 || (now.getMonth() === 9 && now.getDate() > 26)) ? now.getFullYear() + 1 : now.getFullYear();
+  const year = (now.getMonth() > 9 || (now.getMonth() === 9 && now.getDate() > 12)) ? now.getFullYear() + 1 : now.getFullYear();
   // October is month 9 (0-indexed)
-  return new Date(year, 9, 26, 6, 0, 0);
+  return new Date(year, 9, 12, 6, 0, 0);
 }
 
 function animateNumber(id, newValue) {
