@@ -226,6 +226,19 @@ header.scrolled {
         transform: translateY(-10px) translateX(-50%);
     }
 }
+.main-title {
+  font-size: 3.5rem;   /* Bigger for main heading */
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #222;         /* You can adjust color */
+}
+
+.sub-title {
+  font-size: 1.5rem;   /* Smaller than main heading */
+  font-weight: 500;
+  color: #1c1b1b;         /* Softer color */
+  margin-top: -10px;   /* Brings it closer to main title */
+}
 
 .event-date-home {
     font-size: 7rem;
